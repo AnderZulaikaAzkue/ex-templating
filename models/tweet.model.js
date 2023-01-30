@@ -5,12 +5,19 @@ const Schema = mongoose.Schema;
 
 const tweetSchema = new Schema ({
     user: {
-        user: '',
-        message: '',
-        createdAt: '',
-        fav: false
-    } 
-})
+        type: 'String', 
+        require: 'User name is required'
+     },
+     message: {
+        type: 'String', 
+     },
+     createdAt: {
+        type: 'array',
+     },
+     fav: {
+        type: 'boolean',
+    },
+    });  
 
 const Tweet = mongoose.model('Tweet', tweetSchema);
 module.exports = Tweet;

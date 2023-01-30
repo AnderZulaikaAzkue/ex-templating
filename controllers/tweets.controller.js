@@ -10,7 +10,13 @@
 // Iteration 6: find tweet by id path param and delete it if exists
 
 
+const Tweet = require('../models/tweet.model');
 
 module.exports.list = (req, res, next) => {
-    res.render ('tweets/list')
+    Tweet.find()
+    .then((tweets) => {
+        console.log(tweets);
+    res.render ('tweets/list', { tweets })
+})
+.catch((error) => next(error))
 }

@@ -1,1 +1,7 @@
-home
+<h1>tweet list</h1>
+<ul>
+   {{#each tweets as |tweet|}}
+   <li>{{tweet.user}}</li> 
+    <li>{{tweet.message}}</li> 
+   {{/each}}
+</ul>
