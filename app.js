@@ -1,21 +1,29 @@
+require('dotenv').config();
+
 const express = require('express');
 const logger = require('morgan');
 
-// Create app server
 const app = express();
 
-// Configure hbs as view engine
-// Iteration 1: setup hbs as view engine
+require('./config/db.config');
+
 require('./config/hbs.config');
 
+app.set('view engine', 'hbs');
+app.set('views', `${__dirname}/views`);
+
+//app.use(express.static(`${__dirname}/public`))
+//los static se ponen antes que los otros "use" para que se cargue primero
+
 app.use(logger('dev'));
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  next();
+})
 
-// Iteration 5: configure body parser
-
-// Iteration 2: configure global template vars (res.locals.*)
-
-// Iteration 1: configure router
-
+const routes = require('./config/routes.config');
+app.use('/', routes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.info(`App listening at port ${port}`))
+

@@ -8,3 +8,9 @@
 // Iteration 5: Create tweet validating body params
 
 // Iteration 6: find tweet by id path param and delete it if exists
+
+
+
+module.exports.list = (req, res, next) => {
+    res.render ('tweets/list')
+}

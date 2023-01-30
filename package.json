@@ -4,15 +4,28 @@
   "description": "example of hbs templating with express",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js", 
+    "dev": "nodemon -e js,hbs,css app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "hbs": "^4.2.0",
     "moment": "^2.29.4",
     "mongoose": "^6.9.0",
     "morgan": "^1.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnderZulaikaAzkue/ex-templating.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AnderZulaikaAzkue/ex-templating/issues"
+  },
+  "homepage": "https://github.com/AnderZulaikaAzkue/ex-templating#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
