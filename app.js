@@ -17,7 +17,7 @@ app.set('views', `${__dirname}/views`);
 //los static se ponen antes que los otros "use" para que se cargue primero
 
 // es un middleware para hacer los post del formulario, hace un res del formulario en la view, tiene que ir antes les use, y las rutas
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:false}));
 
 //para todas las peticiones hagan log
 app.use(logger('dev'));
@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 const routes = require('./config/routes.config');
 app.use('/', routes);
 
-//middleware  de rror para todos los catch (), importante, de pone despeus de las routes, no antes
+//middleware  de error para todos los catch (), importante, de pone despeus de las routes, no antes
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500);
