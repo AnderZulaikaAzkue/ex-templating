@@ -24,3 +24,11 @@ hbs.registerHelper("date", (date) => {
 
   return `${Math.round(minDiff)}m ago`;
 });
+
+hbs.registerHelper('isOwnedBy', (tweet, user, options) => {
+  if (tweet.user.id == user?.id) {
+    return options.fn();
+  } else {
+    return options.inverse();
+  }
+});

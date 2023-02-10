@@ -10,6 +10,9 @@ require('./config/db.config');
 
 require('./config/hbs.config');
 
+//middleware para configurar el encripatmiendo del session ID
+const { session, loadSessionUser } = require('./config/session.config');
+
 app.set('view engine', 'hbs');
 app.set('views', `${__dirname}/views`);
 
@@ -21,8 +24,11 @@ app.use(express.urlencoded({extended:false}));
 
 //para todas las peticiones hagan log
 app.use(logger('dev'));
+//middlware que crea los sessiones ID encriptados
+app.use(session);
+app.use(loadSessionUser);
 
-//middleware para no tener que escribir req.path en cada una de las vistas
+//middleware para no tener que escribir req.path en cada una de las vistas ejemp, para poner en oscuro el link boton de nav en cada una de las paginas
 app.use((req, res, next) => {
   res.locals.currentPath = req.path;
   next();
